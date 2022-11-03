@@ -3,7 +3,9 @@
 ### import libraries
 import pandas as pd
 import streamlit as st
+import numpy as np
 import joblib
+from matplotlib import pyplot as plt
 
 #######################################################################################################################################
 ### LAUNCHING THE APP ON THE LOCAL MACHINE
@@ -16,8 +18,6 @@ import joblib
 #######################################################################################################################################
 ### Create a title
 
-st.title("Predicting Coffee Ratings with Review Data")
-
 # Press R in the app to refresh after changing the code and saving here
 
 ### You can also use markdown syntax.
@@ -26,81 +26,45 @@ st.title("Predicting Coffee Ratings with Review Data")
 ### To position text and color, you can use html syntax
 #st.markdown("<h1 style='text-align: center; color: blue;'>Our last morning kick off</h1>", unsafe_allow_html=True)
 
-
-#######################################################################################################################################
-### DATA LOADING
-
-### A. define function to load data
-@st.cache # <- add decorators after tried running the load multiple times
-def load_data(path, num_rows):
-
-    df = pd.read_csv(path, nrows=num_rows)
-
-    return df
-
-### B. Load the data
-coffee = load_data("tfidf_Xremain_combo_df.csv", 4194)
-
-### C. Display the dataframe in the app
-st.dataframe(coffee)
+# https://www.coffeereview.com/review/colombia-la-esperanza-100-geisha-hanashaku/
 
 
 #######################################################################################################################################
-### STATION MAP
+##### Model Demo 1##########
+image0 = ('CoffeeReview.png')
+st.image(image0)
 
-st.subheader('Coffee Origin Locations')      
+st.title("Predicting Coffee Ratings with Review Data")
 
-#st.map(coffee)     
-
-
-#######################################################################################################################################
-### DATA ANALYSIS & VISUALIZATION
-
-### B. Add filter on side bar after initial bar chart constructed
-
-#st.sidebar.subheader("Usage filters")
-#round_trip = st.sidebar.checkbox('Round trips only')
-
-#if round_trip:
-    #df = df[df['Start Station ID'] == df['End Station ID']]
-
-
-### A. Add a bar chart of usage per hour
-
-#st.subheader("Daily usage per hour")
-
-#counts = df["Start Time"].dt.hour.value_counts()
-#st.bar_chart(counts)
-
-### The features we have used here are very basic. Most Python libraries can be imported as in Jupyter Notebook so the possibilities are vast.
-#### Visualizations can be rendered using matplotlib, seaborn, plotly etc.
-#### Models can be imported using *.pkl files (or similar) so predictions, classifications etc can be done within the app using previously optimized models
-#### Automating processes and handling real-time data
-
-
-#######################################################################################################################################
-### MODEL INFERENCE
-
-st.subheader("Using pretrained models with user input")
-
-# A. Load the model using joblib
+st.subheader("Let's test some  new reviews!")
+# Load the model using joblib
 model = joblib.load('/Users/katemondal/Documents/BrainStation/CapstoneProject/rating_pipeline.pkl')
 
-# B. Set up input field
-text = st.text_input('Enter your review text below', 'Amazing coffee.')
+# Set up input field
+review = st.text_input('', '')
 
-# C. Use the model to predict sentiment & write result
-prediction = model.predict({text})
+# Use the model to predict sentiment & write result
+prediction = model.predict({review})
 
-st.write(prediction)
+if review != '':
+    st.subheader('The predicted score is:') 
+    st.header(np.round_(prediction).astype(int))
+else: 
+    st.write('Enter text above to get predicted score.')
 
-###### can keep or do something like this if predictions way off...
-if prediction > 94:
-    st.write('We predict that this is an exceptional coffee!')
-elif prediction > 90:
-    st.write('We predict that this is a very good coffee.')
+# Link to review page 1
+st.write('[Review One](https://www.coffeereview.com/review/tinamit-toliman/)')
+image1 = ('Review_1.png')
+st.image(image1)
 
-else:
-    st.write('We predict that this is a negative review!')
+# Link to review page 2
+st.write('[Review Two](https://www.coffeereview.com/review/colombia-castillo-fruit-maceration-series-peach/)')
+image2 = ('Review_2.png')
+st.image(image2)
+
+# Link to review page 3
+st.write('[Review Three](https://www.coffeereview.com/review/sumatra/)')
+image3 = ('Review_3.png')
+st.image(image3)
 
 
