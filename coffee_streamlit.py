@@ -84,10 +84,10 @@ st.subheader('Coffee Origin Locations')
 st.subheader("Using pretrained models with user input")
 
 # A. Load the model using joblib
-model = joblib.load('/var/folders/jm/x73vvhpx2cd14qw0zx2ccfsc0000gn/T/tmpjmg6rmr_/test.joblib')
+model = joblib.load('/Users/katemondal/Documents/BrainStation/CapstoneProject/rating_pipeline.pkl')
 
 # B. Set up input field
-text = st.text_input('Enter your review text below', 'Best. Restaurant. Ever.')
+text = st.text_input('Enter your review text below', 'Amazing coffee.')
 
 # C. Use the model to predict sentiment & write result
 prediction = model.predict({text})
