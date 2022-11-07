@@ -16,32 +16,23 @@ from matplotlib import pyplot as plt
 
 
 #######################################################################################################################################
-### Create a title
-
-# Press R in the app to refresh after changing the code and saving here
-
-### You can also use markdown syntax.
-#st.write('# Our last morning kick off :sob:')
-
-### To position text and color, you can use html syntax
-#st.markdown("<h1 style='text-align: center; color: blue;'>Our last morning kick off</h1>", unsafe_allow_html=True)
-
-# https://www.coffeereview.com/review/colombia-la-esperanza-100-geisha-hanashaku/
-
-
-#######################################################################################################################################
 ##### Model Demo 1##########
+
+# load coffee review website image
 image0 = ('CoffeeReview.png')
 st.image(image0)
 
+# insert page title
 st.title("Predicting Coffee Ratings with Review Data")
 
+# insert subheader
 st.subheader("Let's test some  new reviews!")
+
 # Load the model using joblib
 model = joblib.load('/Users/katemondal/Documents/BrainStation/CapstoneProject/rating_pipeline.pkl')
 
 # Set up input field
-review = st.text_input('', '')
+review = st.text_area('', '')
 
 # Use the model to predict sentiment & write result
 prediction = model.predict({review})
