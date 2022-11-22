@@ -24,15 +24,17 @@ This project scrapes review data from CoffeeReview.com using Beautiful Soup. Dat
 
 ## Getting Started
 The project spans 7 Jupyter Notebooks:
-* Notebook 1: Collecting the Data
-* Notebook 2: Cleaning the Data Part 1
-* Notebook 3: Cleaning the Data Part 2
-* Notebook 4: Compiling the Data and Further Cleaning
-* Notebook 5: Baseline EDA and Modeling on Non-Text Data
-* Notebook 6: Natural Language Processing 
-* Notebook 7: Optimizing Models on All Data
+* Notebook 1: Collecting the Data - scrapes the data from CoffeeReview.com
+* Notebook 2: Cleaning the Data Part 1 - cleans the first scraped dataset (split because of complications with scraping)
+* Notebook 3: Cleaning the Data Part 2 - cleans the second scraped dataset (split because of complications with scraping)
+* Notebook 4: Compiling the Data and Further Cleaning - combines the two datasets and does further cleaning
+* Notebook 5: Baseline EDA and Modeling on Non-Text Data - initial EDA and baseline models to see how numeric data does
+* Notebook 6: Natural Language Processing - transforming the text and testing with baseline model
+* Notebook 7: Optimizing Models on All Data - looking for best model on combined data, interpretation and conclusions
 
 Follow the steps outlined below to get your environment set up to support the project.
+
+In addition, a streamlit file can be used to launch a site for testing the best text-only model on new reviews. Supporting images are included for rendering the streamlit page. Local URL: http://localhost:8502
 
 ### Prerequisites
 The following packages will need to be installed to run the notebooks.

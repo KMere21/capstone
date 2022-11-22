@@ -49,13 +49,10 @@ image1 = ('Review_1.png')
 st.image(image1)
 
 # Link to review page 2
-st.write('[Review Two](https://www.coffeereview.com/review/colombia-castillo-fruit-maceration-series-peach/)')
+st.write('[Review Two](https://www.coffeereview.com/review/kenya-aa/)')
 image2 = ('Review_2.png')
 st.image(image2)
 
-# Link to review page 3
-st.write('[Review Three](https://www.coffeereview.com/review/sumatra/)')
-image3 = ('Review_3.png')
-st.image(image3)
+
 
 
